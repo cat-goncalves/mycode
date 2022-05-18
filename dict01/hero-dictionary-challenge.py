@@ -15,4 +15,7 @@ print( ScarletWitch.keys() )
 choice = input("Input a key to display the dictionary values: ")
 
 # Use the variable choice to accress your dictionaried and return the appropriate value
-print(f"Scarlet Witch's {choice} is/are: {ScarletWitch[choice]}")
+if ScarletWitch.get(choice) == None:
+    print("Sorry, invalid key")
+else:
+    print(f"Scarlet Witch's {choice} is/are: {ScarletWitch[choice]}")
