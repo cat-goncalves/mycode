@@ -30,3 +30,8 @@ class Cheat_Loaded_Dice(Player): # inheritance of Player
           if self.dice[i] < 6:
               self.dice[i] += 1
           i += 1
+
+# new cheater - allows user to roll another dice with an output between 3 and 6
+class Cheat_Extra_Dice(Player):
+    def cheat(self):
+        self.dice.append(randint(3, 6))
