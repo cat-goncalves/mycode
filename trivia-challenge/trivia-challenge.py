@@ -33,11 +33,28 @@ def index():
     # return jsonify(questions)
     q = questions[randint(1, len(questions))]
     print({q["question"]})
-    return render_template("index.html", question = q["question"])
+    return render_template("index.html", question = q["question"], answer = q["answer"])
 
-@app.route("/<answer>")
+@app.route("/guess",  methods=["POST"])
 def guess():
-    return
+    userAnswer = request.form.get('userAnswer')
+    answer = request.form.get('answer')
+    
+    if answer.lower() == answer.lower():
+        result = "Correct"
+        return redirect(f"/outcome/{result}")
+    else:
+        result = "Incorrect"
+        return redirect(f"/outcome/{result}")
+
+@app.route("/outcome/<result>",  methods=["GET"])
+def outcome(result):
+    checkGuess = result
+    return render_template("outcome.html", checkGuess = result)
+
+@app.route("/playAgain", methods=["POST"])
+def playAgain():
+    return redirect("/")
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=2224)

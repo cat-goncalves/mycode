@@ -10,5 +10,11 @@
     <h1>Trivia</h1>
     <h3>Question:</h3>
     <p>{{ question }}</p>
+    <form action="/guess" method="post">
+        <label for="answer">Enter your guess below</label>
+        <input type="text" name="userAnswer" id="">
+        <input type="text" name="answer" value = "{{answer}}" id="" hidden>
+        <input type="submit" value="">
+    </form>
 </body>
 </html>
